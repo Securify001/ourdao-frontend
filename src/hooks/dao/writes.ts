@@ -285,6 +285,17 @@ export function useLoanRequest() {
   return { requestLoan, isPending, error, isSuccess, cancelSignature }
 }
 
+export function useEditLoanProposal() {
+  const { run, isPending, isSuccess, error, address, cancelSignature } = useWriteAction()
+  const editLoanProposal = (proposalId: number, newAmount: bigint) =>
+    run('Editing loan proposal', (w) => w.editLoanProposal(proposalId, newAmount), [
+      queryKeys.loanProposal(proposalId),
+      queryKeys.loanProposalsAll(),
+      queryKeys.userData(address!),
+    ])
+  return { editLoanProposal, isPending, error, isSuccess, cancelSignature }
+}
+
 export function useVoting() {
   const { run, isPending, isSuccess, error, address, cancelSignature } = useWriteAction()
   const voteOnProposal = (proposalId: number, support: boolean) =>

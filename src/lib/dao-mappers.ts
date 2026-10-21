@@ -151,6 +151,7 @@ export interface UILoanProposal {
   creationTime: number
   votingStartTime: number
   votingEndTime: number
+  editingPeriodEnd: number
   isPrivate: boolean
   documentHash: string
   hasVoted: boolean
@@ -175,6 +176,7 @@ export function mapLoanProposal(raw: Record<string, unknown>, hasVoted = false):
       creationTime: 0,
       votingStartTime: 0,
       votingEndTime: 0,
+      editingPeriodEnd: 0,
       isPrivate: false,
       documentHash: '',
       hasVoted,
@@ -194,6 +196,7 @@ export function mapLoanProposal(raw: Record<string, unknown>, hasVoted = false):
     creationTime: v.created_at,
     votingStartTime: editingEnd,
     votingEndTime: editingEnd ? editingEnd + GOVERNANCE_PERIOD_FALLBACKS.votingPeriod : 0,
+    editingPeriodEnd: editingEnd,
     isPrivate: false, // loan proposals are public; treasury proposals can be private
     documentHash: '',
     hasVoted,
