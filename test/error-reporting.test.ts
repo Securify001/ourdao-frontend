@@ -1,10 +1,10 @@
+// @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import {
   reportError,
   setErrorReportingOptIn,
   setErrorReportingTransport,
   isErrorReportingOptedIn,
-  ERROR_REPORTING_OPT_IN_KEY,
   type ErrorReportPayload,
 } from '@/lib/error-reporting'
 

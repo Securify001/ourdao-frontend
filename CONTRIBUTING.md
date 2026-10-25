@@ -164,11 +164,12 @@ npm run build
 
 If your change is something a member would notice (a new or removed feature, a changed number, label, or flow, a fixed bug they could hit), add a line under `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md) in the same PR. See [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md) for the release checklist and versioning guidelines. Refactors, tests, CI, and docs don't need one.
 
-If your change targets a different `ourdao-backend` or `ourdao-contracts` build, also update the `Backend:` / `Contracts:` lines under Unreleased. The contracts line must match `_last_verified` in `contract/interface.json`, and a test enforces that. These lines are what let a bug report, which names the version shown in the app sidebar, be traced to a combination of versions.
+If your change targets a different `ourdao-backend` or `ourdao-contracts` build, also update the `Backend:` / `Contracts:` lines under Unreleased. The contracts line must match the `Source: ourdao-contracts @ ...` header in `src/lib/generated/dao-bindings.ts`, and a test enforces that. These lines are what let a bug report, which names the version shown in the app sidebar, be traced to a combination of versions.
 
 ## What a good pull request looks like
 
 - **It's scoped to one issue.** If you find a second problem while working, open a second issue. Don't bundle.
+- **`Closes #N` lists only the issues the diff actually fixes.** GitHub closes every issue named with `Closes`, `Fixes` or `Resolves` when the PR merges, so don't list other issues you're assigned to or plan to fix next. To mention a related issue without closing it, write `Refs #N`.
 - **It includes a test that would fail without your change**, where the change affects logic. Pure visual/layout changes are the reasonable exception — say so in the description, and include a before/after screenshot instead.
 - **It doesn't reformat code you didn't change.**
 - **Its description explains why, not just what.**
@@ -180,6 +181,7 @@ If your change targets a different `ourdao-backend` or `ourdao-contracts` build,
 - Pull requests against an unassigned or unclaimed issue.
 - Formatting-only, whitespace-only, or comment-typo-only changes.
 - Unrelated dependency bumps bundled into a feature or fix.
+- Descriptions that claim to close issues the diff doesn't fix.
 - Generated or AI-authored changes whose author can't explain the diff when asked in review. The policy is outcome-based, not tool-based — use whatever tools you like, but you're accountable for understanding and defending what you submit.
 - Logic changes with no accompanying test.
 - Anything that introduces placeholder, sample, or fabricated user-facing content (see above).

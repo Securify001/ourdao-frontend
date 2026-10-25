@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import {
   ClockIcon,
@@ -496,7 +497,7 @@ export default function LoanDetailsPage() {
               id={loanId}
               isPrivate={proposal.isPrivate}
               fallbackDates={{
-                created: proposal.createdAt,
+                created: proposal.creationTime,
                 votingStart: proposal.votingStartTime,
                 votingEnd: proposal.votingEndTime,
               }}
@@ -797,7 +798,7 @@ export default function LoanDetailsPage() {
               id={loanId}
               isPrivate={proposal.isPrivate}
               fallbackDates={{
-                created: proposal.createdAt,
+                created: proposal.creationTime,
                 votingStart: proposal.votingStartTime,
                 votingEnd: proposal.votingEndTime,
               }}

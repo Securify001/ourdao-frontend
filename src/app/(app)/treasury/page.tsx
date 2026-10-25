@@ -1,8 +1,7 @@
-import { useProposalFilters, type ProposalSortOrder } from '@/hooks/useProposalFilters'
-import { calculateVotingWeight } from '@/hooks/dao/reads'
-import { Search } from 'lucide-react'
 'use client'
 
+import { useProposalFilters, type ProposalSortOrder } from '@/hooks/useProposalFilters'
+import { calculateVotingWeight } from '@/hooks/dao/reads'
 import { useState } from 'react'
 import Link from 'next/link'
 import { PageHeader } from '@/components/PageHeader'
@@ -22,6 +21,7 @@ import {
   X,
   Landmark,
   TriangleAlert,
+  Search,
 } from 'lucide-react'
 import {
   useUserData,
@@ -37,7 +37,7 @@ import {
 import { LoadError } from '@/components/LoadError'
 import { useAnnounceLoad } from '@/lib/useAnnounceLoad'
 import { asBigInt } from '@/lib/dao-mappers'
-import { formatToken, parseToken } from '@/lib/utils'
+import { parseToken } from '@/lib/utils'
 import { AddressLink } from '@/components/AddressLink'
 import { PROPOSAL_STATUS_LABELS, PROPOSAL_STATUS_AWAITING_FUNDS } from '@/constants'
 import { VirtualizedList } from '@/components/ui/virtualized-list'

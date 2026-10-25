@@ -400,6 +400,20 @@ export function useStaking() {
   return { stake, unstake, isPending, error, isSuccess, cancelSignature }
 }
 
+export function useCommitVote() {
+  const { run, isPending, error, cancelSignature } = useWriteAction()
+  const commitVote = (proposalId: number, commitment: Uint8Array) =>
+    run('Committing treasury vote', (w) => w.commitTreasuryVote(proposalId, commitment), [queryKeys.treasuryProposalsAll()])
+  return { commitVote, isPending, error, cancelSignature }
+}
+
+export function useRevealVote() {
+  const { run, isPending, error, cancelSignature } = useWriteAction()
+  const revealVote = (proposalId: number, support: boolean, salt: Uint8Array) =>
+    run('Revealing treasury vote', (w) => w.revealTreasuryVote(proposalId, support, salt), [queryKeys.treasuryProposalsAll()])
+  return { revealVote, isPending, error, cancelSignature }
+}
+
 export function useTreasuryVoting() {
   const { run, isPending, isSuccess, error, address, cancelSignature } = useWriteAction()
   const voteOnTreasury = (proposalId: number, support: boolean) =>
